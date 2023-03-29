@@ -127,7 +127,7 @@ void make_table(vector <string> result, int maxcols, int maxrows, int maxcellsiz
         cout << "Result array size: " << result.size() << endl;
         cout << "Max Cols: " << maxcols << endl;
         cout << "Max Rows: " << maxrows << endl;
-        cout << "Max Cell Size: " << maxcellsize << endl;
+        cout << "Max Cell Size: " << maxcellsize + 2 << endl;
 
 
         int cols = 0 ;  // Reset and re-use counter variable for columns.
