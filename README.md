@@ -1,38 +1,62 @@
 # tsv2tableplusplus
 csv2table++ but for tab separated values!
 
+# Now doing what I wanted
+
+Which was to take standard input OR an argument filename and process  it accordingly.
 
 ```bash
-$ cat test.tsv
-Name	Age
-Bart	9
-Lisa	7
-Maggie	18mo
-Marge	32
-Homer	35
+$ tsv2table++
+Main Function.
+Has Exactly One Argument? false
+process_stdin() called
+hello   world
+foo     bar
+Empty line ignored.
+make_table() called.
+Result array size: 4
+Max Cols: 2
+Max Rows: 3
+Max Cell Size: 7
++--------+--------+
+|  hello |  world |
++--------+--------+
+|    foo |    bar |
++--------+--------+
 
-$ tsv2table++ test.tsv 
-Argument Count: 2
-Argument0: tsv2table++
-Argument1: test.tsv
+$ echo -e "foo\tbar\nfoo\tbar" | tsv2table++
+Main Function.
+Has Exactly One Argument? false
+process_stdin() called
 Empty line ignored.
+make_table() called.
+Result array size: 4
+Max Cols: 2
+Max Rows: 3
+Max Cell Size: 5
++------+------+
+|  foo |  bar |
++------+------+
+|  foo |  bar |
++------+------+
+
+$ tsv2table++ test.tsv
+Main Function.
+Has Exactly One Argument? true
+process_arg() called on test.tsv
 Empty line ignored.
-Elements in result array: 12
-Max Columns: 2
-Max Rows: 8
-Max Cell Size: 8
-+---------+---------+
-|    Name |     Age |
-+---------+---------+
-|    Bart |       9 |
-|    Lisa |       7 |
-|  Maggie |    18mo |
-|   Marge |      32 |
-|   Homer |      35 |
-+---------+---------+
-$ 
+make_table() called.
+Result array size: 4
+Max Cols: 2
+Max Rows: 3
+Max Cell Size: 5
++------+------+
+|  foo |  bar |
++------+------+
+|  foo |  bar |
++------+------+
 ```
 
 # Issues
 
-Same as csv2table++ - need to work on getting input from STDIN too. So far just works with tsv filename as argument. 
+Need to work on getting it DRY compliant (do not repeat yourself). 
